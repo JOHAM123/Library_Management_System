@@ -18,9 +18,11 @@
     "bootstrap-vue": "^2.9.0",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1",
-    "vuetable": "^1.5.12"
+    "vuetable": "^1.5.12",
+    "vuetify": "^2.2.19"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.0",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",

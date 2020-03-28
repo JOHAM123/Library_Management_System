@@ -1,19 +1,23 @@
 <template>
-  <div id="app">
-      <page-header />
-      <main>
-          <router-view></router-view>
-      </main>
-  </div>
+  <v-app id="inspire">
+    <page-header />
+    <v-content>
+      <router-view></router-view>
+    </v-content>
+    <page-footer />
+  </v-app>
 </template>
 
 <script>
 /* eslint-disable */
 import PageHeader from "@/components/Header.vue";
+import PageFooter from "@/components/Footer.vue";
+
 export default {
   name: "app",
   components: {
-    PageHeader
+    PageHeader,
+    PageFooter
   }
 };
 </script>
@@ -25,7 +29,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin:0px;
+  margin: 0px;
 }
 .danger-alert {
   color: red;

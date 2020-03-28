@@ -7,7 +7,7 @@ export async function getBooks(req: Request, res: Response): Promise<Response | 
    try {
       const conn = await connect();
       const book = await conn.query('SELECT * FROM books');
-        return res.status(200).json({data:book.rows}); 
+        return res.status(200).json(book.rows); 
    } catch (error) {
       console.log(error);      
    }
