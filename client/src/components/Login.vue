@@ -8,20 +8,27 @@
           </v-toolbar>
           <v-card-text>
             <v-form>
-              <v-text-field label="Login" name="login" prepend-icon="person" type="text" />
+              <v-text-field
+                v-model="username"
+                label="Login"
+                name="login"
+                prepend-icon="person"
+                type="text"
+              />
 
               <v-text-field
                 id="password"
                 label="Password"
                 name="password"
                 prepend-icon="lock"
+                v-model="password"
                 type="password"
               />
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer />
-            <v-btn color="primary">Login</v-btn>
+            <v-btn color="primary" @click="authenticate()">Login</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -31,10 +38,33 @@
 
 <script>
 /* eslint-disable */
-
+import axios from "axios";
 export default {
   props: {
     source: String
+  },
+  data: {
+    username: "Joham",
+    password: ""
+  },
+  methods: {
+    authenticate() {
+      var config = {
+        params: {
+          username: this.username,
+          password: this.password
+        }
+      };
+      axios.get("http://localhost:3000/books/login", config).then(res => {
+        console.log(res);
+        if(res.data == "exist"){
+          window.location="/books"
+        } else {
+          alert("username or password is not correct ");
+        }
+
+      });
+    }
   }
 };
 </script>

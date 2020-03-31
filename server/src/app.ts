@@ -3,6 +3,8 @@ import IndexRoutes from "./routes/index.routes";
 import BookRoutes from "./routes/book.routes";
 import bodyParser  from 'body-parser';
 import cors from 'cors';
+import { sequlize } from "./database";
+
 
 export class App {
 
@@ -33,6 +35,17 @@ export class App {
     async listen(): Promise<void> {
         await this.app.listen(this.app.get('port'));
         console.log(`server on url http://localhost:${this.app.get('port')}/`);
-    }
+       
+        sequlize.authenticate().then(async() => {
+            console.log("database connected");
+    
+            // try {
+            //     await sequlize.sync({force: true});
+            // } catch (error) {
+            //     console.log(error.message);
+            // }
+    });
 
+
+}
 }
